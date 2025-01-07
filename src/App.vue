@@ -1,8 +1,8 @@
 <script setup lang="ts">
-    import header from '@/components/header.vue'
+    import AppHeader from '@/components/AppHeader.vue'
 </script>
 
 <template>
-    <header />
+    <AppHeader />
     <RouterView />
 </template>
