@@ -14,7 +14,22 @@
     const getData = async (): Promise<void> => {
         isLoading.value = true
         const docSnap = await getDoc(docref)
-        interview.value = docSnap.data() as IInterview
+
+        if (docSnap.exists()) {
+            const data = docSnap.data() as IInterview
+            if (data.stages && data.stages.length) {
+                data.stages = data.stages.map((stage: IStage) => {
+                    if (stage.date && stage.date instanceof Timestamp) {
+                        return {
+                            ...stage,
+                            date: stage.date.toDate()
+                        }
+                    }
+                    return stage
+                })
+            }
+            interview.value = data
+        }
         isLoading.value = false
         console.log(interview.value)
     }
@@ -30,7 +45,7 @@
             if (!interview.value.stages) {
                 interview.value.stages = []
             }
-            interview.value.stages.push({ name: '', date: '', description: '' })
+            interview.value.stages.push({ name: '', date: null, description: '' })
         }
     }
 
@@ -42,20 +57,12 @@
         }
     }
 
-    const saveDateStage = (index: number) => {
-        if (interview.value?.stages && interview.value.stages.length) {
-            const date = interview.value.stages[index].date
-            interview.value.stages[index].date = dayjs(date).format('DD.MM.YYYY')
-        }
-    }
-
     onMounted(async () => await getData())
 </script>
 
 <template>
     <app-progress v-if="isLoading" />
     <div class="content-interview" v-else-if="interview?.id && !isLoading">
-        {{ interview }}
         <app-card>
             <template #title>Собеседование в компанию {{ interview.company }}</template>
             <template #content>
@@ -100,7 +107,7 @@
                         </div>
                         <div class="flex flex-column gap-2">
                             <label :for="`stage-date-${index}`">Дата прохождения этапа</label>
-                            <app-calendar class="input mb-3" :id="`stage-date-${index}`" dateFormat="dd.mm.yy" @date-select="saveDateStage(index)" v-model="stage.date" />
+                            <app-calendar class="input mb-3" :id="`stage-date-${index}`" dateFormat="dd.mm.yy" v-model="stage.date" />
                         </div>
                         <div class="flex flex-column gap-2">
                             <label :for="`stage-description-${index}`">Комментарий</label>

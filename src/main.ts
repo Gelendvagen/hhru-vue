@@ -14,6 +14,8 @@ import InputNumber from 'primevue/inputnumber'
 import Textarea from 'primevue/textarea'
 import Calendar from 'primevue/calendar'
 import Radio from 'primevue/radiobutton'
+import Tooltip from 'primevue/tooltip'
+import Badge from 'primevue/badge'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -32,6 +34,7 @@ app.use(ConfirmationService)
 app.use(createPinia())
 app.use(router)
 app.use(PrimeVue)
+app.directive('tooltip', Tooltip)
 app.component('app-menubar', Menubar)
 app.component('app-button', Button)
 app.component('app-input-text', InputText)
@@ -45,5 +48,6 @@ app.component('app-input-number', InputNumber)
 app.component('app-textarea', Textarea)
 app.component('app-calendar', Calendar)
 app.component('app-radio', Radio)
+app.component('app-badge', Badge)
 
 app.mount('#app')
