@@ -16,6 +16,7 @@ import Calendar from 'primevue/calendar'
 import Radio from 'primevue/radiobutton'
 import Tooltip from 'primevue/tooltip'
 import Badge from 'primevue/badge'
+import Chart from 'primevue/chart'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -49,5 +50,6 @@ app.component('app-textarea', Textarea)
 app.component('app-calendar', Calendar)
 app.component('app-radio', Radio)
 app.component('app-badge', Badge)
+app.component('app-chart', Chart)
 
 app.mount('#app')

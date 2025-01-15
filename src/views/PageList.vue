@@ -7,7 +7,8 @@
         orderBy,
         getDocs,
         deleteDoc,
-        doc
+        doc,
+        where
     } from 'firebase/firestore'
     import { useUserStore } from '@/stores/user'
     import type { IInterview } from '@/interfaces'
@@ -18,6 +19,7 @@
     const confirm = useConfirm()
     const interviews = ref<IInterview[]>([])
     const isLoading = ref<boolean>(true)
+    const selectedFilterResult = ref<string>('')
 
     const getAllInterviews = async <T extends IInterview>(): Promise<T[]> => {
         const getData = query(
@@ -49,7 +51,7 @@
 
     onMounted(async () => {
         const listIntervies: Array<IInterview> = await getAllInterviews()
-        interviews.value = [...listIntervies]
+        interviews.value = listIntervies
         isLoading.value = false
     })
 </script>
