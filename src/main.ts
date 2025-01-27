@@ -17,6 +17,7 @@ import Radio from 'primevue/radiobutton'
 import Tooltip from 'primevue/tooltip'
 import Badge from 'primevue/badge'
 import Chart from 'primevue/chart'
+import { initializeApp } from 'firebase/app'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
