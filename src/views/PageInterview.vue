@@ -1,8 +1,10 @@
 <script setup lang="ts">
     import { ref, onMounted } from 'vue'
     import { useRoute } from 'vue-router'
+    import { getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore'
     import { useUserStore } from '@/stores/user'
     import type { IInterview, IStage } from '@/interfaces'
+    import dayjs from 'dayjs'
 
     const db = getFirestore()
     const userStore = useUserStore()

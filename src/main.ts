@@ -29,6 +29,15 @@ import App from './App.vue'
 import router from './router'
 import { Menubar } from 'primevue'
 
+const firebaseConfig = {
+    apiKey: 'AIzaSyD3PQ9RM1yOHyWBehYL0BSH3v0aEgxsfGI',
+    authDomain: 'interviews-e3988.firebaseapp.com',
+    projectId: 'interviews-e3988',
+    storageBucket: 'interviews-e3988.appspot.com',
+    messagingSenderId: '495477223231',
+    appId: '1:495477223231:web:78198cd224dc8c9a6f2d8a'
+}
+
 const app = createApp(App)
 
 app.use(ToastService)
