@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import { ref, onMounted } from 'vue'
+    import { getFirestore, collection, query, orderBy, getDocs } from 'firebase/firestore'
     import { useUserStore } from '@/stores/user'
     import type { IInterview } from '@/interfaces'
 
