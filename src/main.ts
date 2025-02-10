@@ -2,9 +2,15 @@ import './assets/main.css'
 import 'primevue/resources/themes/saga-blue/theme.css'
 import 'primeicons/primeicons.css'
 import 'primeflex/primeflex.css'
+
+import { initializeApp } from 'firebase/app'
+
 import Button from 'primevue/button'
+import Menubar from 'primevue/menubar'
 import InputText from 'primevue/inputtext'
 import Toast from 'primevue/toast'
+import Tooltip from 'primevue/tooltip'
+
 import ProgressSpinner from 'primevue/ProgressSpinner'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
@@ -14,10 +20,9 @@ import InputNumber from 'primevue/inputnumber'
 import Textarea from 'primevue/textarea'
 import Calendar from 'primevue/calendar'
 import Radio from 'primevue/radiobutton'
-import Tooltip from 'primevue/tooltip'
 import Badge from 'primevue/badge'
 import Chart from 'primevue/chart'
-import { initializeApp } from 'firebase/app'
+import Card from 'primevue/card'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -27,7 +32,6 @@ import ConfirmationService from 'primevue/confirmationservice'
 
 import App from './App.vue'
 import router from './router'
-import { Menubar } from 'primevue'
 
 const firebaseConfig = {
     apiKey: 'AIzaSyD3PQ9RM1yOHyWBehYL0BSH3v0aEgxsfGI',
@@ -37,6 +41,8 @@ const firebaseConfig = {
     messagingSenderId: '495477223231',
     appId: '1:495477223231:web:78198cd224dc8c9a6f2d8a'
 }
+
+initializeApp(firebaseConfig)
 
 const app = createApp(App)
 
