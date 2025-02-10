@@ -8,6 +8,7 @@
     const userStore = useUserStore()
     const db = getFirestore()
     const confirm = useConfirm()
+
     const interviews = ref<IInterview[]>([])
     const isLoading = ref<boolean>(true)
     const selectedFilterResult = ref<string>('')
@@ -36,9 +37,12 @@
             )
         } else {
             getData = query(
-            collection(db, `users/${userStore.userId}/interviews`),
-            orderBy('createdAt', 'desc')
-        )
+                collection(db, `users/${userStore.userId}/interviews`),
+                orderBy('createdAt', 'desc')
+            )
+        }
+        const listDocs = await getDocs(getData)
+        return listDocs.docs.map((doc) => doc.data() as T)
     }
 
     const confirmRemoveInterview = async (id: string): Promise<void> => {
