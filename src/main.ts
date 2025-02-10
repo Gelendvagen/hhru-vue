@@ -3,7 +3,7 @@ import 'primevue/resources/themes/saga-blue/theme.css'
 import 'primeicons/primeicons.css'
 import 'primeflex/primeflex.css'
 
-import { initializeApp } from 'firebase/app'
+import { initializeApp } from "firebase/app";
 
 import Button from 'primevue/button'
 import Menubar from 'primevue/menubar'
@@ -67,5 +67,6 @@ app.component('app-calendar', Calendar)
 app.component('app-radio', Radio)
 app.component('app-badge', Badge)
 app.component('app-chart', Chart)
+app.component('app-card', Card)
 
 app.mount('#app')

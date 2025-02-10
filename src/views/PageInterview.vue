@@ -1,22 +1,22 @@
 <script setup lang="ts">
     import { ref, onMounted } from 'vue'
     import { useRoute } from 'vue-router'
-    import { getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore'
+    import { getFirestore, doc, getDoc, updateDoc, Timestamp } from 'firebase/firestore'
     import { useUserStore } from '@/stores/user'
     import type { IInterview, IStage } from '@/interfaces'
-    import dayjs from 'dayjs'
 
     const db = getFirestore()
     const userStore = useUserStore()
     const route = useRoute()
+
     const isLoading = ref<boolean>(true)
     const interview = ref<IInterview>()
+
     const docref = doc(db, `users/${userStore.userId}/interviews`, route.params.id as string)
 
     const getData = async (): Promise<void> => {
         isLoading.value = true
         const docSnap = await getDoc(docref)
-
         if (docSnap.exists()) {
             const data = docSnap.data() as IInterview
             if (data.stages && data.stages.length) {

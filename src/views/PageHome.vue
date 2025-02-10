@@ -1,41 +1,45 @@
 <script setup lang="ts">
     import { ref, computed } from 'vue'
     import { useRouter } from 'vue-router'
-    import { getAuth } from 'firebase/auth'
     import { getFirestore, setDoc, doc } from 'firebase/firestore'
     import type { IInterview } from '@/interfaces'
     import { v4 as uuidv4 } from 'uuid'
+    import { useUserStore } from '@/stores/user'
 
     const db = getFirestore()
     const router = useRouter()
+    const userStore = useUserStore()
+
     const company = ref<string>('')
     const vacancyLink = ref<string>('')
     const hrName = ref<string>('')
     const contactTelegram = ref<string>('')
     const contactWhatsApp = ref<string>('')
     const contactPhone = ref<string>('')
+
     const loading = ref<boolean>(false)
+    
     const addNewInterview = async (): Promise<void> => {
-        loading.value = true
-        const payload: IInterview = {
-            id: uuidv4(),
-            company: company.value,
-            vacancyLink: vacancyLink.value,
-            hrName: hrName.value,
-            contactTelegram: contactTelegram.value,
-            contactWhatsApp: contactWhatsApp.value,
-            contactPhone: contactPhone.value,
-            createdAt: new Date()
-        }
-        const userId = getAuth().currentUser?.uid
-        if (userId) {
-            await setDoc(doc(db, `users/${userId}/interviews`, payload.id), payload).then(() => {
-                router.push('/list')
-            })
-        }
+      loading.value = true
+      const payload: IInterview = {
+        id: uuidv4(),
+        company: company.value,
+        vacancyLink: vacancyLink.value,
+        hrName: hrName.value,
+        contactTelegram: contactTelegram.value,
+        contactWhatsApp: contactWhatsApp.value,
+        contactPhone: contactPhone.value,
+        createdAt: new Date()
+      }
+      if (userStore.userId) {
+        await setDoc(doc(db, `users/${userStore.userId}/interviews`, payload.id), payload).then(() => {
+          router.push('/list')
+        })
+      }
     }
+    
     const disabledSaveButton = computed<boolean>(() => {
-        return !(company.value && vacancyLink.value && hrName.value)
+      return !(company.value && vacancyLink.value && hrName.value)
     })
 </script>
 
