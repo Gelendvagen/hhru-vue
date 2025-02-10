@@ -34,15 +34,15 @@ import App from './App.vue'
 import router from './router'
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyD3PQ9RM1yOHyWBehYL0BSH3v0aEgxsfGI',
-    authDomain: 'interviews-e3988.firebaseapp.com',
-    projectId: 'interviews-e3988',
-    storageBucket: 'interviews-e3988.appspot.com',
-    messagingSenderId: '495477223231',
-    appId: '1:495477223231:web:78198cd224dc8c9a6f2d8a'
-}
+  apiKey: "AIzaSyDvU1Dxi9yvYB41dbWWnWjJG1lr8Wu-H54",
+  authDomain: "hh-interview-d9beb.firebaseapp.com",
+  projectId: "hh-interview-d9beb",
+  storageBucket: "hh-interview-d9beb.firebasestorage.app",
+  messagingSenderId: "22984298857",
+  appId: "1:22984298857:web:99535489a675126df22df8"
+};
 
-initializeApp(firebaseConfig)
+initializeApp(firebaseConfig);
 
 const app = createApp(App)
 
