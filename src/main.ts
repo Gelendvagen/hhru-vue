@@ -1,5 +1,5 @@
 import './assets/main.css'
-import 'primevue/resources/themes/saga-blue/theme.css'
+//import 'primevue/resources/themes/saga-blue/theme.css'
 import 'primeicons/primeicons.css'
 import 'primeflex/primeflex.css'
 
@@ -11,7 +11,7 @@ import InputText from 'primevue/inputtext'
 import Toast from 'primevue/toast'
 import Tooltip from 'primevue/tooltip'
 
-import ProgressSpinner from 'primevue/ProgressSpinner'
+import ProgressSpinner from 'primevue/progressspinner'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
 import ConfirmDialog from 'primevue/confirmdialog'

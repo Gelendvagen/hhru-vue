@@ -2,9 +2,9 @@
     import { ref, computed } from 'vue'
     import { useRouter } from 'vue-router'
     import { getFirestore, setDoc, doc } from 'firebase/firestore'
-    import type { IInterview } from '@/interfaces'
+    import type { IInterview } from '../interfaces'
     import { v4 as uuidv4 } from 'uuid'
-    import { useUserStore } from '@/stores/user'
+    import { useUserStore } from './stores/user'
 
     const db = getFirestore()
     const router = useRouter()
@@ -37,7 +37,7 @@
         })
       }
     }
-    
+
     const disabledSaveButton = computed<boolean>(() => {
       return !(company.value && vacancyLink.value && hrName.value)
     })

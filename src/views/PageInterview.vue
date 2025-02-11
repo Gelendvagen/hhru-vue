@@ -2,8 +2,8 @@
     import { ref, onMounted } from 'vue'
     import { useRoute } from 'vue-router'
     import { getFirestore, doc, getDoc, updateDoc, Timestamp } from 'firebase/firestore'
-    import { useUserStore } from '@/stores/user'
-    import type { IInterview, IStage } from '@/interfaces'
+    import { useUserStore } from './stores/user'
+    import type { IInterview, IStage } from '../interfaces'
 
     const db = getFirestore()
     const userStore = useUserStore()

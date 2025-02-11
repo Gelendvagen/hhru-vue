@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { ref, computed } from 'vue'
     import type { ComputedRef } from 'vue'
-    import { useUserStore } from '@/stores/user'
+    import { useUserStore } from './stores/user'
     import { getAuth, signOut } from 'firebase/auth'
     import { useRouter } from 'vue-router'
     
@@ -50,7 +50,7 @@
 
 <template>
     <app-menubar :model="items" class="menu">
-        <template #item="{ item }">
+        <template #item="{ item, props }">
             <template v-if="item.show">
                 <router-link :to="item.path" class="flex align-items-center" v-bind="props.action">
                     <span :class="item.icon" class="p-menuitem-icon" />
