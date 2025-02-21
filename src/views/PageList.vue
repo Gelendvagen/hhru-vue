@@ -154,7 +154,7 @@ onMounted(async () => {
       </app-column>
       <app-column header="Пройденные этапы">
         <template #body="slotProps">
-          <span v-if="!slotProps.data.stages">Не заполнено</span>
+          <span v-if="!slotProps.data.stages">—</span>
           <div v-else class="interview-stages">
             <app-badge
               v-for="(stage, i) in slotProps.data.stages"
@@ -168,13 +168,13 @@ onMounted(async () => {
       </app-column>
       <app-column header="Зарплатная вилка">
         <template #body="slotProps">
-          <span v-if="!slotProps.data.salaryFrom">Не заполнено</span>
+          <span v-if="!slotProps.data.salaryFrom">—</span>
           <span v-else>{{ slotProps.data.salaryFrom }} - {{ slotProps.data.salaryTo }}</span>
         </template>
       </app-column>
       <app-column header="Результат">
         <template #body="slotProps">
-          <span v-if="!slotProps.data.result">Не заполнено</span>
+          <span v-if="!slotProps.data.result">—</span>
           <template v-else>
             <app-badge
               :severity="slotProps.data.result === 'Offer' ? 'success' : 'danger'"
